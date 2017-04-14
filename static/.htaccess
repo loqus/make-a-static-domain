@@ -1,0 +1,25 @@
+Header unset Set-Cookie
+FileETag None
+Header unset ETag
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Credentials true
+<IfModule mod_headers.c>
+    Header set Pragma public
+    Header set Vary "Accept-Encoding"
+	<filesMatch "\.(jpg|jpeg|png|gif|swf|ico|htc)$">
+	Header set Cache-Control "max-age=2592000, public"
+	</filesMatch>
+	<filesMatch "\.(eot|eof|woff|svg)$">
+	Header set Cache-Control "max-age=2592000, public"
+
+	</filesMatch>
+	<filesMatch "\.(xml|txt|css|js|xpi)$">
+	Header set Cache-Control "max-age=2592000, public"
+	</filesMatch>
+	<filesMatch "\.(html|htm|php)$">
+	Header set Cache-Control "max-age=2592000, private, proxy-revalidate"
+	</filesMatch>
+	<filesMatch "\.(m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf)$">
+	Header set Cache-Control "max-age=2592000, private, proxy-revalidate"
+	</filesMatch>
+</IfModule>
